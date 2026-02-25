@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/invite/accept",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "env": {
+    "VITE_SUPABASE_URL": "@supabase_url",
+    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "VITE_SITE_URL": "@site_url"
+  }
+}
